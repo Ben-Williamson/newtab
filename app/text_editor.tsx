@@ -59,7 +59,7 @@ export function TextEditor() {
         fetchEditorContent();
     }, [editor]);
 
-    const saveContentToServer = async (content) => {
+    const saveContentToServer = async (content: string) => {
         try {
             const response = await fetch('/api/save-content', {
                 method: 'POST',
@@ -80,22 +80,23 @@ export function TextEditor() {
                     message: `Server responded with ${response.ok}.`,
                 })
             }
-        } catch (error) {
+        } catch (error: unknown) {
             notifications.show({
                 title: 'Failed to save file',
-                message: `Error message: ${error.message}.`,
+                message: `Unknown error ${error}`,
             })
         }
     };
 
     useEffect(() => {
-        const handleKeyDown = (event) => {
+        const handleKeyDown = (event: KeyboardEvent) => {
             if ((event.metaKey || event.ctrlKey) && event.key === 's') {
                 event.preventDefault();
-                console.log('Saving editor content...');
-                const editorContent = editor.getHTML();
-                console.log(editorContent);
-                saveContentToServer(editorContent);
+                const editorContent = editor?.getHTML();
+                if(editorContent)
+                {
+                    saveContentToServer(editorContent);
+                }
             }
         };
         document.addEventListener('keydown', handleKeyDown);
