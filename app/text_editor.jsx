@@ -9,6 +9,8 @@ import TextAlign from '@tiptap/extension-text-align';
 import Superscript from '@tiptap/extension-superscript';
 import SubScript from '@tiptap/extension-subscript';
 
+import { notifications } from '@mantine/notifications';
+
 import { useEffect } from "react";
 
 export function TextEditor() {
@@ -58,12 +60,21 @@ export function TextEditor() {
             });
 
             if (response.ok) {
-                console.log('Content saved successfully!');
+                notifications.show({
+                    title: 'File saved',
+                    message: 'Notepad stored to disk.',
+                })
             } else {
-                console.error('Failed to save content');
+                notifications.show({
+                    title: 'Failed to save file',
+                    message: `Server responded with ${response.ok}.`,
+                })
             }
         } catch (error) {
-            console.error('Error saving content:', error);
+            notifications.show({
+                title: 'Failed to save file',
+                message: `Error message: ${error.message}.`,
+            })
         }
     };
 

@@ -1,9 +1,9 @@
-import { NextResponse } from 'next/server';
+import {NextRequest, NextResponse} from 'next/server';
 import fs from 'fs';
 import path from 'path';
 
 // Handle the POST request
-export async function POST(req) {
+export async function POST(req: NextRequest) {
     try {
         const { content } = await req.json(); // Parse the JSON request body
 

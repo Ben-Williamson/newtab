@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .  # The current directory is the build context
+      dockerfile: Dockerfile  # Explicitly specify the Dockerfile
+    ports:
+      - "3000:3000"  # Map port 3000 on the container to port 3000 on the host
+    environment:
+      NODE_ENV: production  # Make sure the environment is production
+      PORT: 3000  # Define the port (same as in your Dockerfile)
+      HOSTNAME: "0.0.0.0"  # Ensure the app binds to all network interfaces
+    restart: always
