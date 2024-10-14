@@ -6,8 +6,7 @@ import '@mantine/tiptap/styles.css';
 import {ColorSchemeScript, MantineProvider} from '@mantine/core';
 
 export const metadata = {
-    title: 'My Mantine app',
-    description: 'I have followed setup instructions carefully',
+    title: 'New Tab'
 };
 
 export default function RootLayout({
