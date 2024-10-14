@@ -1,5 +1,7 @@
 'use client';
 
+import './text_editor.css'
+
 import { RichTextEditor, Link } from '@mantine/tiptap';
 import { useEditor } from '@tiptap/react';
 import Highlight from '@tiptap/extension-highlight';
@@ -8,6 +10,9 @@ import Underline from '@tiptap/extension-underline';
 import TextAlign from '@tiptap/extension-text-align';
 import Superscript from '@tiptap/extension-superscript';
 import SubScript from '@tiptap/extension-subscript';
+import Text from '@tiptap/extension-text'
+import TaskItem from '@tiptap/extension-task-item'
+import TaskList from '@tiptap/extension-task-list'
 
 import { notifications } from '@mantine/notifications';
 
@@ -25,6 +30,11 @@ export function TextEditor() {
             Superscript,
             SubScript,
             Highlight,
+            Text,
+            TaskList,
+            TaskItem.configure({
+                nested: true,
+            }),
             TextAlign.configure({ types: ['heading', 'paragraph'] }),
         ],
         content,
