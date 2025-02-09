@@ -4,6 +4,7 @@ import {Title, Stack, Container, Center, Space, Input} from "@mantine/core"
 import {TextEditor} from "@/app/text_editor";
 import {IconSearch} from '@tabler/icons-react';
 import {useState} from "react";
+import AppLinks from "@/app/app_links";
 
 export default function Home() {
     const [searchInput, setSearchInput] = useState('');
@@ -26,7 +27,9 @@ export default function Home() {
                             }
                         }
             }/>
-            <Space h="md"/>
+            {/*<Space h="xl"/>*/}
+            <AppLinks/>
+            <Space h={"xl"}/>
             <TextEditor/>
         </Stack></Container>;
 }
